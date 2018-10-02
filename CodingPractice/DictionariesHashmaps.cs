@@ -64,13 +64,14 @@ namespace CodingPractice
             {
                 long ir = i * r;
 
-                if (d2.TryGetValue(ir, out long d2ir))
+                if (d2.TryGetValue(ir, out long j))
                 {
-                    count += d2ir;
+                    count += j;
                 }
-                if (d1.TryGetValue(ir, out long d1ir))
+
+                if (d1.TryGetValue(ir, out long k))
                 {
-                    d2[i] += d1ir;
+                    d2[i] += k;
                 }
 
                 d1[i]++;
@@ -80,14 +81,5 @@ namespace CodingPractice
            
         }
 
-
-        private class MyList<T1, T2>
-        {
-            public MyList()
-            {
-            }
-            public long item { get; set; }
-            public int index { get; set; }
-        }
     }
 }
