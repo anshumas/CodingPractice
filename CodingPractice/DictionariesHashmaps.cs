@@ -1,5 +1,7 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 
 namespace CodingPractice
@@ -90,8 +92,19 @@ namespace CodingPractice
         /// https://www.hackerrank.com/challenges/frequency-queries/problem?h_l=interview&playlist_slugs%5B%5D=interview-preparation-kit&playlist_slugs%5B%5D=dictionaries-hashmaps
         /// </summary>
         [TestMethod]
+        public void freqQueryFromFileTest()
+        {
+
+            List<List<int>> queries = File.ReadAllLines(@"C:\Source\CodePractice\CodingPractice\TestCases\freqQuery_TestCase4.txt").Select(q => q.Split(' ').Select(queriesTemp => Convert.ToInt32(queriesTemp)).ToList()).ToList();
+
+            var result = File.ReadAllLines(@"C:\Source\CodePractice\CodingPractice\TestCases\freqQuery_TestCase4_output.txt").Select(q => Convert.ToInt32(q)).ToList();
+
+            CollectionAssert.AreEqual(freqQuery(queries), result);
+        }
+        [TestMethod]
         public void freqQueryTest()
         {
+
             List<List<int>> queries = new List<List<int>>() {
                 new List<int> {1, 5},
                 new List<int> {1, 6},
@@ -142,14 +155,19 @@ namespace CodingPractice
                         {
                             if (collectionItems.TryGetValue(item[1], out int i))
                                 collectionItems[item[1]] += i;
-                           else
+                            else
                                 collectionItems.Add(item[1], 1);
                             break;
                         }
                     case 2:
                         {
                             if (collectionItems.TryGetValue(item[1], out int i))
-                                collectionItems[item[1]] -= i;
+                            {
+                                if (i == 1)
+                                    collectionItems.Remove(item[1]);
+                                else
+                                    collectionItems[item[1]] -= i;
+                            }
                             break;
                         }
                     case 3:
