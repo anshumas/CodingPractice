@@ -5,12 +5,12 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{5CFA96DD-BE7B-4A31-8DAB-8F3136FB63E4}</ProjectGuid>
+    <ProjectGuid>{5FC20C9D-76B6-44A8-A951-90C9C3AC7B80}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>CodingPractice</RootNamespace>
-    <AssemblyName>CodingPractice</AssemblyName>
-    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <RootNamespace>CodingPractice.Test</RootNamespace>
+    <AssemblyName>CodingPractice.Test</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">15.0</VisualStudioVersion>
@@ -49,15 +49,28 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DictionariesHashmaps.cs" />
+    <Compile Include="CommonPrograms\HackerRank\DictionariesHashmapsTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="TestCases\freqQuery_TestCase4_output.txt" />
-    <Content Include="TestCases\freqQuery_TestCase4.txt" />
+    <Folder Include="CrackingTheCoding\TestCases\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="CommonPrograms\HackerRank\TestCases\freqQuery_TestCase4.txt" />
+    <Content Include="CommonPrograms\HackerRank\TestCases\freqQuery_TestCase4_output.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CodingPractice\CommonPrograms.csproj">
+      <Project>{5cfa96dd-be7b-4a31-8dab-8f3136fb63e4}</Project>
+      <Name>CommonPrograms</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CrackingTheCoding\CrackingTheCoding.csproj">
+      <Project>{4442d3ff-5877-4622-8870-db4f5b684059}</Project>
+      <Name>CrackingTheCoding</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
