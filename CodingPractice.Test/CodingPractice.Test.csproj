@@ -50,6 +50,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CommonPrograms\HackerRank\DictionariesHashmapsTest.cs" />
+    <Compile Include="CommonPrograms\SortingAlgorithmsTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
