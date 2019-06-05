@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using CommonPrograms;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
@@ -20,12 +21,21 @@ namespace CodingPractice.Test.CommonPrograms
             List<int> unsorted = new List<int>();
             List<int> sorted;
             Random random = new Random();
-            for (int i = 0; i < 10; i++)
+            
+            for (int i = 0; i < 200000; i++)
             {
-                unsorted.Add(random.Next(0, 100));
+                unsorted.Add(random.Next(0, 100000));
             }
-            sorted=_object.MergeSort(unsorted);
+            Stopwatch stopwatch = new Stopwatch();
+            stopwatch.Start();
+            sorted =_object.MergeSort(unsorted);
+            stopwatch.Stop();
+           string totaltime= stopwatch.Elapsed.ToString();
             Assert.AreEqual(sorted.Count, 10);
+            /*
+             20,000  -00:00:00.1306896
+             2,00,000-00:00:02.6504209
+             */
         }
     }
 }

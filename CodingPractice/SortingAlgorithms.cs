@@ -8,6 +8,7 @@ namespace CommonPrograms
 {
     public class SortingAlgorithms
     {
+        #region Merge Sort
         public List<int> MergeSort(List<int> input)
         {
             if (input.Count <= 1)
@@ -33,7 +34,7 @@ namespace CommonPrograms
                         result.Add(left.First());
                         left.Remove(left.First());
                     }
-                    if (left.First() > right.First())
+                   else if (left.First() > right.First())
                     {
                         result.Add(right.First());
                         right.Remove(right.First());
@@ -55,5 +56,6 @@ namespace CommonPrograms
             }
             return result;
         }
+        #endregion
     }
 }
