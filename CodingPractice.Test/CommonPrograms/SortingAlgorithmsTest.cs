@@ -22,9 +22,9 @@ namespace CodingPractice.Test.CommonPrograms
             List<int> sorted;
             Random random = new Random();
             
-            for (int i = 0; i < 200000; i++)
+            for (int i = 0; i < 2000000; i++)
             {
-                unsorted.Add(random.Next(0, 100000));
+                unsorted.Add(random.Next(1, 100000));
             }
             Stopwatch stopwatch = new Stopwatch();
             stopwatch.Start();
@@ -35,6 +35,30 @@ namespace CodingPractice.Test.CommonPrograms
             /*
              20,000  -00:00:00.1306896
              2,00,000-00:00:02.6504209
+             20,00,000-
+             */
+        }
+        [TestMethod]
+        public void QuickSortTest()
+        {
+            List<int> unsorted = new List<int>();
+            List<int> sorted;
+            Random random = new Random();
+
+            for (int i = 0; i < 20; i++)
+            {
+                unsorted.Add(random.Next(1, 20));
+            }
+            Stopwatch stopwatch = new Stopwatch();
+            stopwatch.Start();
+            sorted = _object.QuickSort(unsorted);
+            stopwatch.Stop();
+            string totaltime = stopwatch.Elapsed.ToString();
+            Assert.AreEqual(sorted.Count, 10);
+            /*
+             20,000  -00:00:00.0076616
+             2,00,000-00:00:00.0455105
+             20,00,000-00:00:00.9286194
              */
         }
     }

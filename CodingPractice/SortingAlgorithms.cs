@@ -34,7 +34,7 @@ namespace CommonPrograms
                         result.Add(left.First());
                         left.Remove(left.First());
                     }
-                   else if (left.First() > right.First())
+                    else if (left.First() > right.First())
                     {
                         result.Add(right.First());
                         right.Remove(right.First());
@@ -42,7 +42,7 @@ namespace CommonPrograms
                 }
                 else
                 {
-                    if (left.Count > 0 )
+                    if (left.Count > 0)
                     {
                         result.Add(left.First());
                         left.Remove(left.First());
@@ -55,6 +55,63 @@ namespace CommonPrograms
                 }
             }
             return result;
+        }
+        #endregion
+        #region quick sort
+        public List<int> QuickSort(List<int> inputList)
+        {
+            QuickSort(inputList, 0, inputList.Count - 1);
+            return inputList;
+        }
+        private void QuickSort(List<int> inputList, int left, int right)
+        {
+            if (left >= right)
+                return;
+            int pivot = inputList[(right - left) / 2];
+            int index = partition(inputList, left, right, pivot);
+            if (index > 1)
+            {
+                QuickSort(inputList, left, index - 1);
+            }
+            if (index + 1 < right)
+            {
+                QuickSort(inputList, index + 1, right);
+            }
+        }
+        private int partition(List<int> inputlist, int left, int right, int pivot)
+        {
+
+            while (left <= right)
+            {
+                while (inputlist[left] < pivot)
+                {
+                    left++;
+                }
+                while (inputlist[right] > pivot)
+                {
+                    right--;
+                }
+                if (left <= right)
+                {
+                    if (inputlist[left] != inputlist[right])
+                        swap(inputlist, left, right);
+                    left++;
+                    right--;
+
+                }
+
+            }
+            return left;
+
+        }
+        private void swap(List<int> inputlist, int left, int right)
+        {
+            if (inputlist[left] != inputlist[right])
+            {
+                int tmp = inputlist[left];
+                inputlist[left] = inputlist[right];
+                inputlist[right] = tmp;
+            }
         }
         #endregion
     }
