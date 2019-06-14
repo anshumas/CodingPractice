@@ -264,7 +264,8 @@ namespace CommonPrograms
                 inputlist[left] = inputlist[right];
                 inputlist[right] = tmp;
             }
-            #endregion
+            
         }
+        #endregion
     }
 }

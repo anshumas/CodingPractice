@@ -3,10 +3,16 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 
-namespace CommonPrograms.HackerRank
+namespace CommonPrograms
 {
-    public class DictionariesHashmaps
+    public class HackerRankProblems
     {
+        private SortingAlgorithms _sortingAlgorithms;
+        public HackerRankProblems()
+        {
+            _sortingAlgorithms = new SortingAlgorithms();
+        }
+
         #region sherlock-and-anagrams
         /// <summary>
         /// https://www.hackerrank.com/challenges/sherlock-and-anagrams/problem?h_l=interview&playlist_slugs%5B%5D=interview-preparation-kit&playlist_slugs%5B%5D=dictionaries-hashmaps
@@ -108,6 +114,28 @@ namespace CommonPrograms.HackerRank
 
             return result;
 
+        }
+        #endregion 
+
+        #region Mark and Toys
+        /// <summary>
+        /// https://www.hackerrank.com/challenges/mark-and-toys/problem?h_l=interview&playlist_slugs%5B%5D=interview-preparation-kit&playlist_slugs%5B%5D=sorting
+        /// </summary>
+        /// <param name="prices"></param>
+        /// <param name="k"></param>
+        /// <returns></returns>
+        public int MaximumToys(int[] prices, int k)
+        {
+            prices = _sortingAlgorithms.HeapSort(prices);
+            int totalPrice = 0;
+            int count = 0;
+            while (totalPrice + prices[count] <= k)
+            {
+                totalPrice += prices[count];
+                count++;
+
+            }
+            return count++;
         }
         #endregion
     }

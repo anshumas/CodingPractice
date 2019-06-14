@@ -1,20 +1,20 @@
-﻿using CommonPrograms.HackerRank;
+﻿using CommonPrograms;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 
-namespace CodingPractice.Test.CommonPrograms.HackerRank
+namespace CodingPractice.Test.CommonPrograms
 {
     [TestClass]
-    public class DictionariesHashmapsTest
+    public class HackerRankProblemsTest
     {
-        DictionariesHashmaps _testObject;
+        HackerRankProblems _testObject;
         [TestInitialize]
         public void TestInitialize()
         {
-            _testObject = new DictionariesHashmaps();
+            _testObject = new HackerRankProblems();
         }
         #region sherlock-and-anagrams
         /// <summary>
@@ -56,9 +56,9 @@ namespace CodingPractice.Test.CommonPrograms.HackerRank
         public void FreqQueryFromFileTest()
         {
 
-            List<List<int>> queries = File.ReadAllLines(@"C:\Users\anshu\Dropbox\Source\CodingPractice\CodingPractice.Test\CommonPrograms\HackerRank\TestCases\freqQuery_TestCase4.txt").Select(q => q.Split(' ').Select(queriesTemp => Convert.ToInt32(queriesTemp)).ToList()).ToList();
+            List<List<int>> queries = File.ReadAllLines(@"C:\Users\anshu\Dropbox\Source\CodingPractice\CodingPractice.Test\CommonPrograms\TestCases\freqQuery_TestCase4.txt").Select(q => q.Split(' ').Select(queriesTemp => Convert.ToInt32(queriesTemp)).ToList()).ToList();
 
-            var result = File.ReadAllLines(@"C:\Users\anshu\Dropbox\Source\CodingPractice\CodingPractice.Test\CommonPrograms\HackerRank\TestCases\freqQuery_TestCase4_output.txt").Select(q => Convert.ToInt32(q)).ToList();
+            var result = File.ReadAllLines(@"C:\Users\anshu\Dropbox\Source\CodingPractice\CodingPractice.Test\CommonPrograms\TestCases\freqQuery_TestCase4_output.txt").Select(q => Convert.ToInt32(q)).ToList();
 
             Assert.AreEqual(_testObject.freqQuery(queries).Count, result.Count);//actual output is not matching need to fix this .
         }
@@ -105,6 +105,28 @@ namespace CodingPractice.Test.CommonPrograms.HackerRank
         }
 
 
+        #endregion
+
+
+        #region Mark and Toys
+        /// <summary>
+        /// https://www.hackerrank.com/challenges/mark-and-toys/problem?h_l=interview&playlist_slugs%5B%5D=interview-preparation-kit&playlist_slugs%5B%5D=sorting
+        /// </summary>
+        [TestMethod]
+        public void MaximumToysTest()
+        {
+            int[] prices = new int[] { 1, 12, 5, 111, 200, 1000, 10 };
+
+
+            // Random random = new Random();
+
+            //for (int i = 0; i < 10; i++)
+            //{
+            //    prices[i] = (random.Next(1, 50));
+            //}
+            var result = _testObject.MaximumToys(prices, 50);
+            Assert.AreEqual(result, 4);//actual output is not matching need to fix this .
+        }
         #endregion
     }
 }

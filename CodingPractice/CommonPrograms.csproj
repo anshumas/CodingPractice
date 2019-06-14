@@ -44,7 +44,7 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="HackerRank\DictionariesHashmaps.cs" />
+    <Compile Include="HackerRankProblems.cs" />
     <Compile Include="SortingAlgorithms.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
