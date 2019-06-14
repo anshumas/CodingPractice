@@ -49,7 +49,8 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CommonPrograms\HackerRank\DictionariesHashmapsTest.cs" />
+    <Compile Include="CommonPrograms\HackerRankProblemsTest.cs" />
+    <Compile Include="CommonPrograms\SortingAlgorithmsTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -59,8 +60,8 @@
     <Folder Include="CrackingTheCoding\TestCases\" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="CommonPrograms\HackerRank\TestCases\freqQuery_TestCase4.txt" />
-    <Content Include="CommonPrograms\HackerRank\TestCases\freqQuery_TestCase4_output.txt" />
+    <Content Include="CommonPrograms\TestCases\freqQuery_TestCase4.txt" />
+    <Content Include="CommonPrograms\TestCases\freqQuery_TestCase4_output.txt" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CodingPractice\CommonPrograms.csproj">
