@@ -137,6 +137,57 @@ namespace CommonPrograms
             }
             return count++;
         }
+        //https://leetcode.com/problems/find-minimum-in-rotated-sorted-array-ii/
         #endregion
+
+
+        #region comparer
+
+
+
+        public Player[] processPlayerList(Player[] players)
+        {
+            Checker chk = new Checker();
+            Array.Sort(players, chk);
+            return players;
+        }
+
+        #endregion
+    }
+    public class Player
+    {
+        public String name;
+        public int score;
+
+        public Player(String name, int score)
+        {  
+            this.name = name;
+            this.score = score;
+        }
+    }
+    public class Checker : IComparer<Player>
+    {
+        // complete this method
+        public int Compare(Player a, Player b)
+        {
+            if (a.score > b.score) return -1;
+            if (a.score < b.score) return 1;
+
+            return a.name.CompareTo(b.name);
+
+
+        }
+        int stringCompare(String a, String b)
+        {
+            int len = a.Length < b.Length ? a.Length : b.Length;
+            char[] aArr = a.ToCharArray();
+            char[] bArr = b.ToCharArray();
+            for (int i = 0; i < len; i++)
+            {
+                if (aArr[i] > bArr[i]) return 1;
+                if (aArr[i] < bArr[i]) return -1;
+            }
+            return 1;
+        }
     }
 }
