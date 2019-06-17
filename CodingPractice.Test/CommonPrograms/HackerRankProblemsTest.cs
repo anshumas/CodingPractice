@@ -2,6 +2,7 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 
@@ -188,5 +189,26 @@ bba 0
         }
         #endregion
 
+        #region Fraudulent Activity Notifications
+        /// <summary>
+        ///https://www.hackerrank.com/challenges/fraudulent-activity-notifications/problem?h_l=interview&playlist_slugs%5B%5D=interview-preparation-kit&playlist_slugs%5B%5D=sorting
+        /// </summary>
+        [TestMethod]
+        public void ActivityNotificationsTest()
+        {
+            List<List<int>> queries = File.ReadLines(@"C:\Users\anshu\Dropbox\Source\CodingPractice\CodingPractice.Test\CommonPrograms\TestCases\ActivityNotificationsInput.txt")
+               .Select(q => q.Split(',').Select(queriesTemp => Convert.ToInt32(queriesTemp)).ToList()).ToList();
+
+            int[] prices = queries[0].ToArray();
+            //int[] prices = new int[] { 2, 3, 4, 2, 3, 6, 8, 4, 5 };
+            Stopwatch stopwatch = new Stopwatch();
+            stopwatch.Start();
+            var result = _testObject.ActivityNotifications(prices, 10000);
+            stopwatch.Stop();
+            string totaltime = stopwatch.Elapsed.ToString();
+            Assert.AreEqual(result, 633);//actual output is not matching need to fix this .
+
+        }
+        #endregion
     }
 }

@@ -251,8 +251,6 @@ namespace CommonPrograms
             // If largest is not root 
             if (largest != i)
             {
-                string ss = "sss";
-
                 swap(arr, i, largest);
                 // Recursively heapify the affected sub-tree 
                 heapify(arr, n, largest);

@@ -153,6 +153,47 @@ namespace CommonPrograms
         }
 
         #endregion
+
+        #region Fraudulent Activity Notifications
+        /// <summary>
+        /// ///https://www.hackerrank.com/challenges/fraudulent-activity-notifications/problem?h_l=interview&playlist_slugs%5B%5D=interview-preparation-kit&playlist_slugs%5B%5D=sorting
+        /// this is not working
+        /// </summary>
+        /// <param name="expenditure"></param>
+        /// <param name="d"></param>
+        /// <returns></returns>
+        public int ActivityNotifications(int[] expenditure, int d)
+        {
+            int[] medianArray = new int[d];
+
+            
+            int result = 0;
+
+            for (int i = d; i < expenditure.Length; i++)
+            {
+                Array.Copy(expenditure, i - d, medianArray, 0, d);
+                double medianValue = GetMedian(medianArray);
+                if (medianValue * 2 <= expenditure[i])
+                {
+                    result++;
+                }
+            }
+            return result;
+        }
+        private double GetMedian(int[] array)
+        {
+            Array.Sort(array);
+            int midlen = array.Length / 2;
+            if (array.Length % 2 == 0)
+            {
+                return (double)(array[midlen - 1] + array[midlen]) / 2;
+            }
+            else
+            {
+                return array[midlen];
+            }
+        }
+        #endregion
     }
     public class Player
     {
@@ -160,7 +201,7 @@ namespace CommonPrograms
         public int score;
 
         public Player(String name, int score)
-        {  
+        {
             this.name = name;
             this.score = score;
         }
