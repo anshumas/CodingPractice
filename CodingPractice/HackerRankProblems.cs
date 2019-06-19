@@ -158,6 +158,7 @@ namespace CommonPrograms
         /// <summary>
         /// ///https://www.hackerrank.com/challenges/fraudulent-activity-notifications/problem?h_l=interview&playlist_slugs%5B%5D=interview-preparation-kit&playlist_slugs%5B%5D=sorting
         /// this is not working
+        /// help https://stackoverflow.com/questions/11361320/data-structure-to-find-median
         /// </summary>
         /// <param name="expenditure"></param>
         /// <param name="d"></param>

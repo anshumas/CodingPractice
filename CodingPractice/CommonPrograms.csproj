@@ -45,6 +45,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="HackerRankProblems.cs" />
+    <Compile Include="MinMaxHeap.cs" />
     <Compile Include="SortingAlgorithms.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

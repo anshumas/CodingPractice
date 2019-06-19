@@ -220,10 +220,7 @@ namespace CommonPrograms
         public int[] HeapSort(int[] arr)
         {
             int n = arr.Length;
-            for (int i = n / 2 - 1; i >= 0; i--)
-            {
-                heapify(arr, n, i);
-            }
+            BuildHeap(arr);
             for (int i = n - 1; i >= 0; i--)
             {
                 // Move current root to end 
@@ -234,7 +231,15 @@ namespace CommonPrograms
 
             return arr;
         }
-        
+        public int[] BuildHeap(int[] arr)
+        {
+            int n = arr.Length;
+            for (int i = n / 2 - 1; i >= 0; i--)
+            {
+                heapify(arr, n, i);
+            }
+            return arr;
+        }
         private void heapify(int[] arr, int n, int i)
         {
             int largest = i; // Initialize largest as root 
