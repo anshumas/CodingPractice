@@ -21,17 +21,40 @@ namespace CodingPractice.Test.CommonPrograms
             List<int> unsorted = new List<int>();
             List<int> sorted;
             Random random = new Random();
-            
+
             for (int i = 0; i < 2000000; i++)
             {
-                unsorted.Add(random.Next(1, 100000));
+                unsorted.Add(random.Next(1, 2000000));
             }
             Stopwatch stopwatch = new Stopwatch();
             stopwatch.Start();
-            sorted =_object.MergeSort(unsorted);
+            sorted = _object.MergeSort(unsorted);
             stopwatch.Stop();
-           string totaltime= stopwatch.Elapsed.ToString();
-            Assert.AreEqual(sorted.Count, 10);
+            string totaltime = stopwatch.Elapsed.ToString();
+            Assert.AreEqual(totaltime, 10);
+            /*
+             20,000  -00:00:00.1306896
+             2,00,000-00:00:02.6504209
+             20,00,000-
+             */
+        }
+        [TestMethod]
+        public void MergeSortArrayTest()
+        {
+            int[] unsorted = new int[2000000];
+
+            Random random = new Random();
+
+            for (int i = 0; i < 2000000; i++)
+            {
+                unsorted[i] = (random.Next(1, 2000000));
+            }
+            Stopwatch stopwatch = new Stopwatch();
+            stopwatch.Start();
+            int[] result = _object.MergeSort(unsorted);
+            stopwatch.Stop();
+            string totaltime = stopwatch.Elapsed.ToString();
+            Assert.AreEqual(totaltime, 10);
             /*
              20,000  -00:00:00.1306896
              2,00,000-00:00:02.6504209
@@ -45,21 +68,111 @@ namespace CodingPractice.Test.CommonPrograms
             List<int> sorted;
             Random random = new Random();
 
-            for (int i = 0; i < 20; i++)
+            for (int i = 0; i < 2000000; i++)
             {
-                unsorted.Add(random.Next(1, 20));
+                unsorted.Add(random.Next(1, 2000000));
             }
             Stopwatch stopwatch = new Stopwatch();
             stopwatch.Start();
             sorted = _object.QuickSort(unsorted);
             stopwatch.Stop();
             string totaltime = stopwatch.Elapsed.ToString();
-            Assert.AreEqual(sorted.Count, 10);
+            Assert.AreEqual(sorted.Count, unsorted.Count);
             /*
              20,000  -00:00:00.0076616
              2,00,000-00:00:00.0455105
-             20,00,000-00:00:00.9286194
+             20,00,000-00:00:00.9556085
              */
+        }
+        [TestMethod]
+        public void BubbleSortTest()
+        {
+            int[] unsorted = new int[20000];
+
+            Random random = new Random();
+
+            for (int i = 0; i < 20000; i++)
+            {
+                unsorted[i] = (random.Next(1, 200));
+            }
+            Stopwatch stopwatch = new Stopwatch();
+            stopwatch.Start();
+            int[] result = _object.BubbleSort(unsorted);
+            stopwatch.Stop();
+            string totaltime = stopwatch.Elapsed.ToString();
+            Assert.AreEqual(totaltime, 10);
+            /*
+             20,000  -00:00:00.1306896
+             2,00,000-00:00:02.6504209
+             20,00,000-
+             */
+        }
+        [TestMethod]
+        public void SelectionSortTest()
+        {
+            int[] unsorted = new int[20000];
+
+            Random random = new Random();
+
+            for (int i = 0; i < 20000; i++)
+            {
+                unsorted[i] = (random.Next(1, 200));
+            }
+            Stopwatch stopwatch = new Stopwatch();
+            stopwatch.Start();
+            int[] result = _object.SelectionSort(unsorted);
+            stopwatch.Stop();
+            string totaltime = stopwatch.Elapsed.ToString();
+            Assert.AreEqual(totaltime, 10);
+            /*
+             20,000  -00:00:00.1306896
+             2,00,000-00:00:02.6504209
+             20,00,000-
+             */
+        }
+        [TestMethod]
+        public void HeapSortTest()
+        {
+
+            string a = "Anshuman";
+            string b = "Singh";
+            int v = stringCompare(a, b);
+
+
+
+
+            int[] unsorted = new int[2000000];
+
+            Random random = new Random();
+
+            for (int i = 0; i < 2000000; i++)
+            {
+                unsorted[i] = (random.Next(1, 2000000));
+            }
+            Stopwatch stopwatch = new Stopwatch();
+            stopwatch.Start();
+            int[] result = _object.HeapSort(unsorted);
+            stopwatch.Stop();
+            string totaltime = stopwatch.Elapsed.ToString();
+            Assert.AreEqual(totaltime, 10);
+            /*
+             20,000  -00:00:00.0192972
+             2,00,000-00:00:00.2128037
+             20,00,000-02.1107629
+             */
+             
+        }
+        int stringCompare(string a, string b)
+        {
+            int len = a.Length < b.Length ? a.Length : b.Length;
+            Char[] aArr = a.ToCharArray();
+            Char[] bArr = b.ToCharArray();
+            for (int i = 0; i < len; i++)
+            {
+                if (aArr[i] > bArr[i]) return 1;
+                if (aArr[i] < bArr[i]) return -1;
+            }
+            return 0;
         }
     }
 }

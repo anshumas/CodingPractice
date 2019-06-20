@@ -3,10 +3,16 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 
-namespace CommonPrograms.HackerRank
+namespace CommonPrograms
 {
-    public class DictionariesHashmaps
+    public class HackerRankProblems
     {
+        private SortingAlgorithms _sortingAlgorithms;
+        public HackerRankProblems()
+        {
+            _sortingAlgorithms = new SortingAlgorithms();
+        }
+
         #region sherlock-and-anagrams
         /// <summary>
         /// https://www.hackerrank.com/challenges/sherlock-and-anagrams/problem?h_l=interview&playlist_slugs%5B%5D=interview-preparation-kit&playlist_slugs%5B%5D=dictionaries-hashmaps
@@ -109,6 +115,121 @@ namespace CommonPrograms.HackerRank
             return result;
 
         }
+        #endregion 
+
+        #region Mark and Toys
+        /// <summary>
+        /// https://www.hackerrank.com/challenges/mark-and-toys/problem?h_l=interview&playlist_slugs%5B%5D=interview-preparation-kit&playlist_slugs%5B%5D=sorting
+        /// </summary>
+        /// <param name="prices"></param>
+        /// <param name="k"></param>
+        /// <returns></returns>
+        public int MaximumToys(int[] prices, int k)
+        {
+            prices = _sortingAlgorithms.HeapSort(prices);
+            int totalPrice = 0;
+            int count = 0;
+            while (totalPrice + prices[count] <= k)
+            {
+                totalPrice += prices[count];
+                count++;
+
+            }
+            return count++;
+        }
+        //https://leetcode.com/problems/find-minimum-in-rotated-sorted-array-ii/
         #endregion
+
+
+        #region comparer
+
+
+
+        public Player[] processPlayerList(Player[] players)
+        {
+            Checker chk = new Checker();
+            Array.Sort(players, chk);
+            return players;
+        }
+
+        #endregion
+
+        #region Fraudulent Activity Notifications
+        /// <summary>
+        /// ///https://www.hackerrank.com/challenges/fraudulent-activity-notifications/problem?h_l=interview&playlist_slugs%5B%5D=interview-preparation-kit&playlist_slugs%5B%5D=sorting
+        /// this is not working
+        /// help https://stackoverflow.com/questions/11361320/data-structure-to-find-median
+        /// </summary>
+        /// <param name="expenditure"></param>
+        /// <param name="d"></param>
+        /// <returns></returns>
+        public int ActivityNotifications(int[] expenditure, int d)
+        {
+            int[] medianArray = new int[d];
+
+            
+            int result = 0;
+
+            for (int i = d; i < expenditure.Length; i++)
+            {
+                Array.Copy(expenditure, i - d, medianArray, 0, d);
+                double medianValue = GetMedian(medianArray);
+                if (medianValue * 2 <= expenditure[i])
+                {
+                    result++;
+                }
+            }
+            return result;
+        }
+        private double GetMedian(int[] array)
+        {
+            Array.Sort(array);
+            int midlen = array.Length / 2;
+            if (array.Length % 2 == 0)
+            {
+                return (double)(array[midlen - 1] + array[midlen]) / 2;
+            }
+            else
+            {
+                return array[midlen];
+            }
+        }
+        #endregion
+    }
+    public class Player
+    {
+        public String name;
+        public int score;
+
+        public Player(String name, int score)
+        {
+            this.name = name;
+            this.score = score;
+        }
+    }
+    public class Checker : IComparer<Player>
+    {
+        // complete this method
+        public int Compare(Player a, Player b)
+        {
+            if (a.score > b.score) return -1;
+            if (a.score < b.score) return 1;
+
+            return a.name.CompareTo(b.name);
+
+
+        }
+        int stringCompare(String a, String b)
+        {
+            int len = a.Length < b.Length ? a.Length : b.Length;
+            char[] aArr = a.ToCharArray();
+            char[] bArr = b.ToCharArray();
+            for (int i = 0; i < len; i++)
+            {
+                if (aArr[i] > bArr[i]) return 1;
+                if (aArr[i] < bArr[i]) return -1;
+            }
+            return 1;
+        }
     }
 }
