@@ -176,6 +176,42 @@ namespace CommonPrograms
                 inputlist[right] = tmp;
             }
         }
+
+        public static void QuickSort(int[] inputArray, int low, int high)
+        {
+            if (low >= high)
+                return;
+
+            int index = Partition(inputArray, low, high);
+            QuickSort(inputArray, low, index - 1);
+            QuickSort(inputArray, index + 1, high);
+
+
+        }
+        static int Partition(int[] inputArray, int low, int high)
+        {
+            int pivot = inputArray[high];
+            int i = low;
+            for (int j = low; j < high; j++)
+            {
+                if (inputArray[j] < pivot)
+                {
+                    Swap(inputArray, i, j);
+                    i++;
+                }
+            }
+            Swap(inputArray, i, high);
+            return i;
+        }
+        static void Swap(int[] inputArray, int from, int to)
+        {
+            if (inputArray[from] != inputArray[to])
+            {
+                int tmp = inputArray[from];
+                inputArray[from] = inputArray[to];
+                inputArray[to] = tmp;
+            }
+        }
         #endregion
         #region bubble sort
         public int[] BubbleSort(int[] arr)
