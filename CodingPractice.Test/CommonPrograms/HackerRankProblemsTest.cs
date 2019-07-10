@@ -2,6 +2,7 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 
@@ -126,6 +127,87 @@ namespace CodingPractice.Test.CommonPrograms
             //}
             var result = _testObject.MaximumToys(prices, 50);
             Assert.AreEqual(result, 4);//actual output is not matching need to fix this .
+        }
+        #endregion
+
+        #region comparor
+        /// <summary>
+        /// https://www.hackerrank.com/challenges/ctci-comparator-sorting/problem?h_l=interview&playlist_slugs%5B%5D=interview-preparation-kit&playlist_slugs%5B%5D=sorting
+        /// </summary>
+        [TestMethod]
+        public void CompareTest()
+        {
+            Player[] player = new Player[20] {
+                new Player("ba", 9),
+                new Player("cb", 9),
+                new Player("aab", 8),
+                new Player("ab", 8),
+                new Player("ab", 8),
+                new Player("b", 8),
+                new Player("cbb", 8),
+                new Player("ccb", 8),
+                new Player("bb", 7),
+                new Player("b", 6),
+                new Player("bca", 6),
+                new Player("ccc", 4),
+                new Player("b", 3),
+                new Player("b", 3),
+                new Player("bb", 3),
+                new Player("bb", 3),
+                new Player("bb", 2),
+                new Player("bbb", 2),
+                new Player("a", 1),
+                new Player("bba", 0),
+            };
+
+            var result = _testObject.processPlayerList(player);
+
+            /*
+             ba 9
+cb 9
+aab 8
+ab 8
+ab 8
+b 8
+cbb 8
+ccb 8
+bb 7
+b 6
+bca 6
+ccc 4
+b 3
+b 3
+bb 3
+bb 3
+bb 2
+bbb 2
+a 1
+bba 0
+             
+             */
+            Assert.AreEqual(result, 4);//actual output is not matching need to fix this .
+        }
+        #endregion
+
+        #region Fraudulent Activity Notifications
+        /// <summary>
+        ///https://www.hackerrank.com/challenges/fraudulent-activity-notifications/problem?h_l=interview&playlist_slugs%5B%5D=interview-preparation-kit&playlist_slugs%5B%5D=sorting
+        /// </summary>
+        [TestMethod]
+        public void ActivityNotificationsTest()
+        {
+            List<List<int>> queries = File.ReadLines(@"C:\Users\anshu\Dropbox\Source\CodingPractice\CodingPractice.Test\CommonPrograms\TestCases\ActivityNotificationsInput.txt")
+               .Select(q => q.Split(',').Select(queriesTemp => Convert.ToInt32(queriesTemp)).ToList()).ToList();
+
+            int[] prices = queries[0].ToArray();
+            //int[] prices = new int[] { 2, 3, 4, 2, 3, 6, 8, 4, 5 };
+            Stopwatch stopwatch = new Stopwatch();
+            stopwatch.Start();
+            var result = _testObject.ActivityNotifications(prices, 10000);
+            stopwatch.Stop();
+            string totaltime = stopwatch.Elapsed.ToString();
+            Assert.AreEqual(result, 633);//actual output is not matching need to fix this .
+
         }
         #endregion
     }

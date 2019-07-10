@@ -176,6 +176,42 @@ namespace CommonPrograms
                 inputlist[right] = tmp;
             }
         }
+
+        public static void QuickSort(int[] inputArray, int low, int high)
+        {
+            if (low >= high)
+                return;
+
+            int index = Partition(inputArray, low, high);
+            QuickSort(inputArray, low, index - 1);
+            QuickSort(inputArray, index + 1, high);
+
+
+        }
+        static int Partition(int[] inputArray, int low, int high)
+        {
+            int pivot = inputArray[high];
+            int i = low;
+            for (int j = low; j < high; j++)
+            {
+                if (inputArray[j] < pivot)
+                {
+                    Swap(inputArray, i, j);
+                    i++;
+                }
+            }
+            Swap(inputArray, i, high);
+            return i;
+        }
+        static void Swap(int[] inputArray, int from, int to)
+        {
+            if (inputArray[from] != inputArray[to])
+            {
+                int tmp = inputArray[from];
+                inputArray[from] = inputArray[to];
+                inputArray[to] = tmp;
+            }
+        }
         #endregion
         #region bubble sort
         public int[] BubbleSort(int[] arr)
@@ -220,10 +256,7 @@ namespace CommonPrograms
         public int[] HeapSort(int[] arr)
         {
             int n = arr.Length;
-            for (int i = n / 2 - 1; i >= 0; i--)
-            {
-                heapify(arr, n, i);
-            }
+            BuildHeap(arr);
             for (int i = n - 1; i >= 0; i--)
             {
                 // Move current root to end 
@@ -232,6 +265,15 @@ namespace CommonPrograms
                 heapify(arr, i, 0);
             }
 
+            return arr;
+        }
+        public int[] BuildHeap(int[] arr)
+        {
+            int n = arr.Length;
+            for (int i = n / 2 - 1; i >= 0; i--)
+            {
+                heapify(arr, n, i);
+            }
             return arr;
         }
         private void heapify(int[] arr, int n, int i)
@@ -250,7 +292,6 @@ namespace CommonPrograms
             // If largest is not root 
             if (largest != i)
             {
-
                 swap(arr, i, largest);
                 // Recursively heapify the affected sub-tree 
                 heapify(arr, n, largest);
@@ -267,5 +308,19 @@ namespace CommonPrograms
             
         }
         #endregion
+
+        public int Reverse(int x)
+        {
+            int rev = 0;
+            while (x != 0)
+            {
+                int pop = x % 10;
+                x /= 10;
+                if (rev > int.MaxValue / 10 || (rev == int.MaxValue / 10 && pop > 7)) return 0;
+                if (rev < int.MinValue / 10 || (rev == int.MinValue / 10 && pop < -8)) return 0;
+                rev = rev * 10 + pop;
+            }
+            return rev;
+        }
     }
 }

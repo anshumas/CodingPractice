@@ -133,6 +133,14 @@ namespace CodingPractice.Test.CommonPrograms
         [TestMethod]
         public void HeapSortTest()
         {
+
+            string a = "Anshuman";
+            string b = "Singh";
+            int v = stringCompare(a, b);
+
+
+
+
             int[] unsorted = new int[2000000];
 
             Random random = new Random();
@@ -153,6 +161,18 @@ namespace CodingPractice.Test.CommonPrograms
              20,00,000-02.1107629
              */
              
+        }
+        int stringCompare(string a, string b)
+        {
+            int len = a.Length < b.Length ? a.Length : b.Length;
+            Char[] aArr = a.ToCharArray();
+            Char[] bArr = b.ToCharArray();
+            for (int i = 0; i < len; i++)
+            {
+                if (aArr[i] > bArr[i]) return 1;
+                if (aArr[i] < bArr[i]) return -1;
+            }
+            return 0;
         }
     }
 }
