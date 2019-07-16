@@ -210,5 +210,21 @@ bba 0
 
         }
         #endregion
+
+        #region Hackerland Radio Transmitters
+        /// <summary>
+        /// https://www.hackerrank.com/challenges/hackerland-radio-transmitters/problem?utm_campaign=challenge-recommendation&utm_medium=email&utm_source=24-hour-campaign
+        /// </summary>
+        [TestMethod]
+        public void HackerlandRadioTransmittersTest()
+        {
+            int[] houses = new int[] { 1,2,3,5,9};
+
+            var result = _testObject.HackerlandRadioTransmitters(houses, 1);
+            Assert.AreEqual(result, 3);
+        }
+        #endregion
+
+
     }
 }

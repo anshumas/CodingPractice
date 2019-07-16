@@ -167,7 +167,7 @@ namespace CommonPrograms
         {
             int[] medianArray = new int[d];
 
-            
+
             int result = 0;
 
             for (int i = d; i < expenditure.Length; i++)
@@ -195,6 +195,37 @@ namespace CommonPrograms
             }
         }
         #endregion
+
+        /// <summary>
+        /// hackerlandRadioTransmitters
+        /// https://www.hackerrank.com/challenges/hackerland-radio-transmitters/problem?utm_campaign=challenge-recommendation&utm_medium=email&utm_source=24-hour-campaign
+        /// </summary>
+        /// <param name="x"></param>
+        /// <param name="k"></param>
+        /// <returns></returns>
+        public int HackerlandRadioTransmitters(int[] x, int k)
+        {
+            Array.Sort(x);
+            int findNext = 0;
+            int currnet = 0;
+            int count = 0;
+            while (findNext <= x.Length)
+            {
+                findNext = currnet + k;
+                if (x[currnet] + k == x[findNext])
+                {
+                    currnet = findNext + k;
+                    count += 1;
+                }
+                else
+                {
+                    currnet += 1;
+                }
+                
+
+            }
+            return count;
+        }
     }
     public class Player
     {

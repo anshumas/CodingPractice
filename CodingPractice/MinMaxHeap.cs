@@ -6,18 +6,40 @@ using System.Threading.Tasks;
 
 namespace CommonPrograms
 {
-   public class MinMaxHeap
+    public class MinMaxHeap
     {
         #region MinHeap Methods
         public static int[] BuildMinHeap(int[] inputArray)
         {
+            int n = inputArray.Length;
+            for (int i = n / 2 - 1; i >= 0; i--)
+            {
+                MinHeapify(inputArray, n, i);
+            }
             return inputArray;
         }
         public static int[] SortMinHeap(int[] inputArray)
         {
+            int n = inputArray.Length;
+            // Build heap (rearrange array) 
+            for (int i = n / 2 - 1; i >= 0; i--)
+                MinHeapify(inputArray, n, i);
+
+            // One by one extract an element from heap 
+            for (int i = n - 1; i >= 0; i--)
+            {
+
+                // Move current root to end 
+                int temp = inputArray[0];
+                inputArray[0] = inputArray[i];
+                inputArray[i] = temp;
+
+                // call max heapify on the reduced heap 
+                MinHeapify(inputArray, i, 0);
+            }
             return inputArray;
         }
-        public static int[] AddItemInMinHeap(int[] inputArray,int item)
+        public static int[] AddItemInMinHeap(int[] inputArray, int item)
         {
             return inputArray;
         }
@@ -41,7 +63,7 @@ namespace CommonPrograms
             }
             return inputArray;
         }
-        
+
         public static int[] SortMaxHeap(int[] inputArray)
         {
             for (int i = inputArray.Length - 1; i >= 0; i--)
@@ -61,9 +83,23 @@ namespace CommonPrograms
         {
             return inputArray;
         }
-        public static int[] FindItemInMaxHeap(int[] inputArray, int item)
+        public static int FindItemInMaxHeap(int[] inputArray, int item)
         {
-            return inputArray;
+            int index = 0;
+            while (index < inputArray.Length)
+            {
+                if (inputArray[index] == item)
+                    break;
+                if (item < inputArray[index])
+                {
+                    index = 2 * index + 1;
+                }
+                else if (item > inputArray[index])
+                {
+                    index = 2 * index + 2;
+                }
+            }
+            return index;
         }
         private static void MaxHeapify(int[] arr, int n, int i)
         {
@@ -86,7 +122,31 @@ namespace CommonPrograms
                 MaxHeapify(arr, n, largest);
             }
         }
+        private static void MinHeapify(int[] arr, int n, int i)
+        {
+            int smallest = i; // Initialize smalles as root 
+            int l = 2 * i + 1; // left = 2*i + 1 
+            int r = 2 * i + 2; // right = 2*i + 2 
 
+            // If left child is smaller than root 
+            if (l < n && arr[l] < arr[smallest])
+                smallest = l;
+
+            // If right child is smaller than smallest so far 
+            if (r < n && arr[r] < arr[smallest])
+                smallest = r;
+
+            // If smallest is not root 
+            if (smallest != i)
+            {
+                int temp = arr[i];
+                arr[i] = arr[smallest];
+                arr[smallest] = temp;
+
+                // Recursively heapify the affected sub-tree 
+                MinHeapify(arr, n, smallest);
+            }
+        }
         #endregion
         private static void swap(int[] inputlist, int left, int right)
         {
