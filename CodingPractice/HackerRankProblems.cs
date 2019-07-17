@@ -206,22 +206,23 @@ namespace CommonPrograms
         public int HackerlandRadioTransmitters(int[] x, int k)
         {
             Array.Sort(x);
-            int findNext = 0;
             int currnet = 0;
             int count = 0;
-            while (findNext <= x.Length)
+            int len = x.Length;
+            while (currnet < len)
             {
-                findNext = currnet + k;
-                if (x[currnet] + k == x[findNext])
+                count++;
+                int next = x[currnet] + k;
+                while (currnet < len && x[currnet] <= next)
                 {
-                    currnet = findNext + k;
-                    count += 1;
+                    currnet++;
                 }
-                else
+                next = x[--currnet] + k;
+                while (currnet < len && x[currnet] <= next)
                 {
-                    currnet += 1;
+                    currnet++;
                 }
-                
+
 
             }
             return count;
