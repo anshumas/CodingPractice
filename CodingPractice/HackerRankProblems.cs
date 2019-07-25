@@ -212,18 +212,167 @@ namespace CommonPrograms
             while (currnet < len)
             {
                 count++;
-                int next = x[currnet] + k;
-                while (currnet < len && x[currnet] <= next)
+                int house = x[currnet] + k;
+                while (currnet < len && x[currnet] <= house)
                 {
                     currnet++;
                 }
-                next = x[--currnet] + k;
-                while (currnet < len && x[currnet] <= next)
+                house = x[--currnet] + k;
+                while (currnet < len && x[currnet] <= house)
                 {
                     currnet++;
                 }
 
 
+            }
+            return count;
+        }
+
+        /// <summary>
+        /// Gridland Metro
+        /// https://www.hackerrank.com/challenges/gridland-metro/problem?utm_campaign=challenge-recommendation&utm_medium=email&utm_source=24-hour-campaign
+        /// </summary>
+        /// <param name="x"></param>
+        /// <param name="k"></param>
+        /// <returns></returns>
+        public int gridlandMetro(int n, int m, int k, int[][] track)
+        {
+            if (!((n >= 1 && n <= Math.Pow(10, 9)) && (m >= 1 && m <= Math.Pow(10, 9)) && (k >= 0 && k <= 1000)))//condintion check
+                return 0;
+            long count = 0;
+            Dictionary<int, Stack<int[]>> lamps = new Dictionary<int, Stack<int[]>>();
+            for (int i = 0; i < k; i++)
+            {
+                int[] tr = track[i];
+                int r = tr[0];
+                int c1 = tr[1];
+                int c2 = tr[2];
+                if (c1 > c2)
+                    continue;
+                Stack<int[]> stack;
+                lamps.TryGetValue(r, out stack);
+                if (stack == null)
+                {
+                    stack = new Stack<int[]>();
+                    stack.Push(new int[] { c1, c2 });
+                    lamps.Add(r, stack);
+                }
+                else
+                {
+                    int[] c = stack.Peek();
+                    if (c[1] >= c1)
+                        c[1] = Math.Max(c[1], c2);
+                    else
+                        stack.Push(new int[] { c1, c2 });
+                }
+
+
+            }
+            long sum = 0;
+            foreach (var item in lamps.Values)
+            {
+                while (item.Count > 0)
+                {
+                    int[] c = item.Pop();
+                    sum += (c[1] - c[0] + 1);
+                }
+            }
+            count = (long)n * m - sum;
+            return (int)count;
+        }
+        public int gridlandMetroOld(int n, int m, int k, int[][] track)
+        {
+            if (!((n >= 1 && n <= Math.Pow(10, 9)) && (m >= 1 && m <= Math.Pow(10, 9)) && (k >= 0 && k <= 1000)))//condintion check
+                return 0;
+            int count = 0;
+            int[,] matrix = new int[n, m];
+
+            for (int i = 0; i < k; i++)
+            {
+                int[] tr = track[i];
+                int row = tr[0];
+                int start = tr[1];
+                int end = tr[2];
+                if (start > end)
+                    continue;
+                for (int s = start - 1; s < end; s++)
+                {
+                    matrix[row - 1, s] = 1;
+                }
+            }
+            for (int i = 0; i < n; i++)
+            {
+                for (int j = 0; j < m; j++)
+                {
+                    if (matrix[i, j] == 0)
+                    {
+                        count++;
+                    }
+                }
+            }
+
+            return count;
+        }
+
+        /// <summary>
+        /// Missing Numbers
+        /// https://www.hackerrank.com/challenges/missing-numbers/problem
+        /// </summary>
+        /// <param name="arr"></param>
+        /// <param name="brr"></param>
+        /// <returns>int[]</returns>
+        public int[] missingNumbers(int[] arr, int[] brr)
+        {
+            Dictionary<int, int> finalList = new Dictionary<int, int>();
+            for (int i = 0; i < brr.Length; i++)
+            {
+                if (finalList.Keys.Contains(brr[i]))
+                {
+                    finalList[brr[i]] += 1;
+                }
+                else
+                {
+                    finalList.Add(brr[i], 1);
+                }
+
+            }
+            for (int i = 0; i < arr.Length; i++)
+            {
+                if (finalList.Keys.Contains(arr[i]))
+                {
+                    finalList[arr[i]] -= 1;
+                }
+            }
+
+            return finalList.Where(p => p.Value > 0).OrderBy(p => p.Key).Select(p => p.Key).ToArray();
+        }
+        /// <summary>
+        /// Pairs
+        /// https://www.hackerrank.com/challenges/pairs/problem?utm_campaign=challenge-recommendation&utm_medium=email&utm_source=24-hour-campaign
+        /// </summary>
+        /// <param name="arr"></param>
+        /// <param name="brr"></param>
+        /// <returns>int[]</returns>
+        public int pairs(int k, int[] arr)
+        {
+
+            Array.Sort(arr);
+            //Array.Reverse(arr);
+            int count = 0;
+            for (int i = 0; i < arr.Length; i++)
+            {
+                if (Array.BinarySearch(arr, arr[i] + k) >= 0) count++;
+                //for (int j = i + 1; j < arr.Length; j++)
+                //{
+                //    if (arr[i] + k == arr[j])
+                //    {
+                //        count++;
+                //    }
+                //    if (arr[j] > arr[i] + k)
+                //    {
+                //        break;
+                //    }
+                //}
             }
             return count;
         }

@@ -63,6 +63,7 @@
   <ItemGroup>
     <Content Include="CommonPrograms\TestCases\freqQuery_TestCase4.txt" />
     <Content Include="CommonPrograms\TestCases\freqQuery_TestCase4_output.txt" />
+    <Content Include="CommonPrograms\TestCases\gridlandMetroInput.txt" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CodingPractice\CommonPrograms.csproj">
