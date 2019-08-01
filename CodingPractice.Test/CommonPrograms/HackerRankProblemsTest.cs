@@ -210,5 +210,163 @@ bba 0
 
         }
         #endregion
+
+        #region Hackerland Radio Transmitters
+        /// <summary>
+        /// https://www.hackerrank.com/challenges/hackerland-radio-transmitters/problem?utm_campaign=challenge-recommendation&utm_medium=email&utm_source=24-hour-campaign
+        /// </summary>
+        [TestMethod]
+        public void HackerlandRadioTransmittersTest()
+        {
+            int[] houses = new int[] { 1, 2, 3, 5, 9 };
+
+            var result = _testObject.HackerlandRadioTransmitters(houses, 1);
+            Assert.AreEqual(result, 3);
+        }
+        #endregion
+        #region Gridland Metro
+        /// <summary>
+        /// https://www.hackerrank.com/challenges/hackerland-radio-transmitters/problem?utm_campaign=challenge-recommendation&utm_medium=email&utm_source=24-hour-campaign
+        /// </summary>
+        [TestMethod]
+        public void gridlandMetroTest()
+        {
+            //int[][] tracks = new int[4][];
+
+            //tracks[0] = Array.ConvertAll("4 4 3".Split(' '), trackTemp => Convert.ToInt32(trackTemp));
+            //tracks[1] = Array.ConvertAll("2 2 3".Split(' '), trackTemp => Convert.ToInt32(trackTemp));
+            //tracks[2] = Array.ConvertAll("3 1 4".Split(' '), trackTemp => Convert.ToInt32(trackTemp));
+            //tracks[3] = Array.ConvertAll("4 4 4".Split(' '), trackTemp => Convert.ToInt32(trackTemp));
+
+            //var result = _testObject.gridlandMetro(4, 4, 4, tracks);
+            //Assert.AreEqual(result, 9);
+
+            using (StreamReader sr = new StreamReader(@"C:\Users\anshu\Dropbox\Source\CodingPractice\CodingPractice.Test\CommonPrograms\TestCases\gridlandMetroInput.txt"))
+            {
+                string currentLine = sr.ReadLine();
+                string[] nmk = currentLine.Split(' ');
+                int n = Convert.ToInt32(nmk[0]);
+                int m = Convert.ToInt32(nmk[1]);
+                int k = Convert.ToInt32(nmk[2]);
+                int[][] track = new int[k][];
+                int line = 0;
+                // currentLine will be null when the StreamReader reaches the end of file
+                while ((currentLine = sr.ReadLine()) != null)
+                {
+                    track[line] = Array.ConvertAll(currentLine.Split(' '), trackTemp => Convert.ToInt32(trackTemp));
+                    line++;
+                }
+                var result = _testObject.gridlandMetro(n, m, k, track);
+                Assert.AreEqual(result, 343959391703854850);
+            }
+        }
+        #endregion
+
+        #region Missing Numbers
+        /// <summary>
+        /// https://www.hackerrank.com/challenges/missing-numbers/problem
+        /// </summary>
+        [TestMethod]
+        public void missingNumbersTest()
+        {
+            int[] arr= new int[10];
+            int[] brr = new int[13];
+
+            arr = Array.ConvertAll("203 204 205 206 207 208 203 204 205 206".Split(' '), trackTemp => Convert.ToInt32(trackTemp));
+            brr = Array.ConvertAll("203 204 204 205 206 207 205 208 203 206 205 206 204".Split(' '), trackTemp => Convert.ToInt32(trackTemp));
+            var result = _testObject.missingNumbers(arr,brr);
+            Assert.AreEqual(result.Length, 3);
+
+            //using (StreamReader sr = new StreamReader(@"C:\Users\anshu\Dropbox\Source\CodingPractice\CodingPractice.Test\CommonPrograms\TestCases\gridlandMetroInput.txt"))
+            //{
+            //    string currentLine = sr.ReadLine();
+            //    string[] nmk = currentLine.Split(' ');
+            //    int n = Convert.ToInt32(nmk[0]);
+            //    int m = Convert.ToInt32(nmk[1]);
+            //    int k = Convert.ToInt32(nmk[2]);
+            //    int[][] track = new int[k][];
+            //    int line = 0;
+            //    // currentLine will be null when the StreamReader reaches the end of file
+            //    while ((currentLine = sr.ReadLine()) != null)
+            //    {
+            //        track[line] = Array.ConvertAll(currentLine.Split(' '), trackTemp => Convert.ToInt32(trackTemp));
+            //        line++;
+            //    }
+            //    var result = _testObject.gridlandMetro(n, m, k, track);
+            //    Assert.AreEqual(result, 343959391703854850);
+            //}
+        }
+        #endregion
+
+        #region find pair
+        /// <summary>
+        /// https://www.hackerrank.com/challenges/pairs/problem?utm_campaign=challenge-recommendation&utm_medium=email&utm_source=24-hour-campaign
+        /// </summary>
+        [TestMethod]
+        public void pairsTest()
+        {
+            int[] arr = new int[10];
+           
+
+            arr = Array.ConvertAll("1 5 3 4 2".Split(' '), trackTemp => Convert.ToInt32(trackTemp));
+            
+            var result = _testObject.pairs(2, arr);
+            Assert.AreEqual(result, 3);
+
+            //using (StreamReader sr = new StreamReader(@"C:\Users\anshu\Dropbox\Source\CodingPractice\CodingPractice.Test\CommonPrograms\TestCases\gridlandMetroInput.txt"))
+            //{
+            //    string currentLine = sr.ReadLine();
+            //    string[] nmk = currentLine.Split(' ');
+            //    int n = Convert.ToInt32(nmk[0]);
+            //    int m = Convert.ToInt32(nmk[1]);
+            //    int k = Convert.ToInt32(nmk[2]);
+            //    int[][] track = new int[k][];
+            //    int line = 0;
+            //    // currentLine will be null when the StreamReader reaches the end of file
+            //    while ((currentLine = sr.ReadLine()) != null)
+            //    {
+            //        track[line] = Array.ConvertAll(currentLine.Split(' '), trackTemp => Convert.ToInt32(trackTemp));
+            //        line++;
+            //    }
+            //    var result = _testObject.gridlandMetro(n, m, k, track);
+            //    Assert.AreEqual(result, 343959391703854850);
+            //}
+        }
+        #endregion
+        #region Maximum Subarray Sum
+        /// <summary>
+        /// https://www.hackerrank.com/challenges/maximum-subarray-sum/problem
+        /// </summary>
+        [TestMethod]
+        public void maximumSumTest()
+        {
+            long[] arr = new long[5];
+
+
+            arr = Array.ConvertAll("3 3 9 9 5".Split(' '), trackTemp => Convert.ToInt64(trackTemp));
+
+            var result = _testObject.maximumSum(arr,7);
+            Assert.AreEqual(result, 6);
+
+            //using (StreamReader sr = new StreamReader(@"C:\Users\anshu\Dropbox\Source\CodingPractice\CodingPractice.Test\CommonPrograms\TestCases\gridlandMetroInput.txt"))
+            //{
+            //    string currentLine = sr.ReadLine();
+            //    string[] nmk = currentLine.Split(' ');
+            //    int n = Convert.ToInt32(nmk[0]);
+            //    int m = Convert.ToInt32(nmk[1]);
+            //    int k = Convert.ToInt32(nmk[2]);
+            //    int[][] track = new int[k][];
+            //    int line = 0;
+            //    // currentLine will be null when the StreamReader reaches the end of file
+            //    while ((currentLine = sr.ReadLine()) != null)
+            //    {
+            //        track[line] = Array.ConvertAll(currentLine.Split(' '), trackTemp => Convert.ToInt32(trackTemp));
+            //        line++;
+            //    }
+            //    var result = _testObject.gridlandMetro(n, m, k, track);
+            //    Assert.AreEqual(result, 343959391703854850);
+            //}
+        }
+        #endregion
     }
 }
