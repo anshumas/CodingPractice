@@ -376,6 +376,35 @@ namespace CommonPrograms
             }
             return count;
         }
+        /// <summary>
+        /// Pairs
+        /// https://www.hackerrank.com/challenges/maximum-subarray-sum/problem
+        /// </summary>
+        /// <param name="arr"></param>
+        /// <param name="brr"></param>
+        /// <returns>int[]</returns>
+        public long maximumSum(long[] a, long m)
+        {
+            long i = 0;
+            long j = 1;
+            long len = a.Length;
+            long MaxSum = Int64.MinValue;
+            long[] subArray;
+            while (i<len)
+            {
+
+            }
+            return 0;
+        }
+        private long SumofArray(long[] arr)
+        {
+            long result = 0;
+            for (int i = 0; i < arr.Length; i++)
+            {
+                result += arr[i];
+            }
+            return result;
+        }
     }
     public class Player
     {

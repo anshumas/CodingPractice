@@ -333,5 +333,40 @@ bba 0
             //}
         }
         #endregion
+        #region Maximum Subarray Sum
+        /// <summary>
+        /// https://www.hackerrank.com/challenges/maximum-subarray-sum/problem
+        /// </summary>
+        [TestMethod]
+        public void maximumSumTest()
+        {
+            long[] arr = new long[5];
+
+
+            arr = Array.ConvertAll("3 3 9 9 5".Split(' '), trackTemp => Convert.ToInt64(trackTemp));
+
+            var result = _testObject.maximumSum(arr,7);
+            Assert.AreEqual(result, 6);
+
+            //using (StreamReader sr = new StreamReader(@"C:\Users\anshu\Dropbox\Source\CodingPractice\CodingPractice.Test\CommonPrograms\TestCases\gridlandMetroInput.txt"))
+            //{
+            //    string currentLine = sr.ReadLine();
+            //    string[] nmk = currentLine.Split(' ');
+            //    int n = Convert.ToInt32(nmk[0]);
+            //    int m = Convert.ToInt32(nmk[1]);
+            //    int k = Convert.ToInt32(nmk[2]);
+            //    int[][] track = new int[k][];
+            //    int line = 0;
+            //    // currentLine will be null when the StreamReader reaches the end of file
+            //    while ((currentLine = sr.ReadLine()) != null)
+            //    {
+            //        track[line] = Array.ConvertAll(currentLine.Split(' '), trackTemp => Convert.ToInt32(trackTemp));
+            //        line++;
+            //    }
+            //    var result = _testObject.gridlandMetro(n, m, k, track);
+            //    Assert.AreEqual(result, 343959391703854850);
+            //}
+        }
+        #endregion
     }
 }
