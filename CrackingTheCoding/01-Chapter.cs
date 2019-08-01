@@ -8,5 +8,14 @@ namespace CrackingTheCoding
 {
     public class Chapter01
     {
+        public static bool IsUnique(string s)
+        {
+            //
+            foreach (var item in s.OrderBy<char>().)
+            {
+
+            }
+            return true;
+        }
     }
 }
