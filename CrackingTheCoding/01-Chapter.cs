@@ -10,11 +10,17 @@ namespace CrackingTheCoding
     {
         public static bool IsUnique(string s)
         {
-            //
-            foreach (var item in s.OrderBy<char>().)
+            if (s.Length > 26)
+                return false;
+            char[] charArray = s.ToCharArray();
+            Array.Sort(charArray);
+            char prev=new char();
+            foreach (var item in charArray)
             {
-
-            }
+                if (item == prev)
+                    return false;
+                prev = item;
+            }  
             return true;
         }
     }

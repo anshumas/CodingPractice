@@ -1,4 +1,5 @@
 ﻿using System;
+using CrackingTheCoding;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace CodingPractice.Test.CrackingTheCoding
@@ -7,8 +8,10 @@ namespace CodingPractice.Test.CrackingTheCoding
     public class Chapter01Test
     {
         [TestMethod]
-        public void TestMethod1()
+        public void IsUniqueTest()
         {
+            var result=Chapter01.IsUnique("absdskdbddkssdks");
+            Assert.IsFalse(result);
         }
     }
 }
