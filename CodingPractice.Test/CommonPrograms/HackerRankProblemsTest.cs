@@ -17,6 +17,18 @@ namespace CodingPractice.Test.CommonPrograms
         {
             _testObject = new HackerRankProblems();
         }
+        /// <summary>
+        /// Count Luck
+        /// https://www.hackerrank.com/challenges/count-luck/problem?utm_campaign=challenge-recommendation&utm_medium=email&utm_source=7-day-campaign
+        /// </summary>
+        public void countLuckTest()
+        {
+           
+            Assert.AreEqual(_testObject.SherlockAndAnagrams("cdcd"), 5);
+        }
+
+
+
         #region sherlock-and-anagrams
         /// <summary>
         /// https://www.hackerrank.com/challenges/sherlock-and-anagrams/problem?h_l=interview&playlist_slugs%5B%5D=interview-preparation-kit&playlist_slugs%5B%5D=dictionaries-hashmaps

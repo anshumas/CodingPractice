@@ -18,6 +18,31 @@ namespace CommonPrograms
             }
             return inputArray;
         }
+        private static void MinHeapify(int[] arr, int n, int i)
+        {
+            int smallest = i; // Initialize smalles as root 
+            int l = 2 * i + 1; // left = 2*i + 1 
+            int r = 2 * i + 2; // right = 2*i + 2 
+
+            // If left child is smaller than root 
+            if (l < n && arr[l] < arr[smallest])
+                smallest = l;
+
+            // If right child is smaller than smallest so far 
+            if (r < n && arr[r] < arr[smallest])
+                smallest = r;
+
+            // If smallest is not root 
+            if (smallest != i)
+            {
+                int temp = arr[i];
+                arr[i] = arr[smallest];
+                arr[smallest] = temp;
+
+                // Recursively heapify the affected sub-tree 
+                MinHeapify(arr, n, smallest);
+            }
+        }
         public static int[] SortMinHeap(int[] inputArray)
         {
             int n = inputArray.Length;
@@ -122,31 +147,7 @@ namespace CommonPrograms
                 MaxHeapify(arr, n, largest);
             }
         }
-        private static void MinHeapify(int[] arr, int n, int i)
-        {
-            int smallest = i; // Initialize smalles as root 
-            int l = 2 * i + 1; // left = 2*i + 1 
-            int r = 2 * i + 2; // right = 2*i + 2 
 
-            // If left child is smaller than root 
-            if (l < n && arr[l] < arr[smallest])
-                smallest = l;
-
-            // If right child is smaller than smallest so far 
-            if (r < n && arr[r] < arr[smallest])
-                smallest = r;
-
-            // If smallest is not root 
-            if (smallest != i)
-            {
-                int temp = arr[i];
-                arr[i] = arr[smallest];
-                arr[smallest] = temp;
-
-                // Recursively heapify the affected sub-tree 
-                MinHeapify(arr, n, smallest);
-            }
-        }
         #endregion
         private static void swap(int[] inputlist, int left, int right)
         {

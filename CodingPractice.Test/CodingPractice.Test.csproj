@@ -52,6 +52,8 @@
     <Compile Include="CommonPrograms\HackerRankProblemsTest.cs" />
     <Compile Include="CommonPrograms\SortingAlgorithmsTest.cs" />
     <Compile Include="CommonPrograms\LeetCodeTest.cs" />
+    <Compile Include="CommonPrograms\UnitTest1.cs" />
+    <Compile Include="CrackingTheCoding\01-ChapterTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

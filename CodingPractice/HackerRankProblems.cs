@@ -12,6 +12,18 @@ namespace CommonPrograms
         {
             _sortingAlgorithms = new SortingAlgorithms();
         }
+        /// <summary>
+        /// https://www.hackerrank.com/challenges/count-luck/problem?utm_campaign=challenge-recommendation&utm_medium=email&utm_source=7-day-campaign
+        /// </summary>
+        /// <param name="matrix"></param>
+        /// <param name="k"></param>
+        /// <returns></returns>
+        public string countLuck(string[] matrix, int k)
+        {
+
+            return "Oops!";//"Impressed";
+        }
+
 
         #region sherlock-and-anagrams
         /// <summary>
