@@ -12,12 +12,43 @@ namespace CommonPrograms
         public Node left;
         public Node right;
         public bool visited = false;
+        public Node(int value)
+        {
+            data = value;
+        }
     }
     public class BinaryTree
     {
+
         public Node Insert(Node root, int v)
         {
-            return null;
+            if (root == null)
+            {
+                return new Node(v);
+            }
+
+            if (root.data > v)
+            {
+                root.left = Insert(root.left, v);
+            }
+            else
+            {
+                root.right = Insert(root.right, v);
+            }
+            return root;
+        }
+        public Node Search(Node root, int v)
+        {
+            if (root == null || root.data == v)
+            {
+                return root;
+            }
+            if (root.data > v)
+            {
+                return Search(root.left, v);
+            }
+
+            return Search(root.right, v); ;
         }
         public Node Delete(Node root, int v)
         {
@@ -35,11 +66,11 @@ namespace CommonPrograms
         {
             return root;
         }
-        public bool Search(Node root, int v)
+        public bool isExist(Node root, int v)
         {
             return false;
         }
-        
+
         public int Hieght(Node root)
         {
             return 0;
