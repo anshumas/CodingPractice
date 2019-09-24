@@ -54,6 +54,84 @@ namespace CommonPrograms
             }
             return rev;
         }
+
+        /// <summary>
+        /// https://leetcode.com/contest/weekly-contest-155/problems/ugly-number-iii/
+        /// </summary>
+        /// <param name="n"></param>
+        /// <param name="a"></param>
+        /// <param name="b"></param>
+        /// <param name="c"></param>
+        /// <returns></returns>
+        public int NthUglyNumber(int n, int a, int b, int c)
+        {
+            /*
+             F(N) = a + b + c - a ∩ c - a ∩ b - b ∩ c + a ∩ b ∩ c
+        F(N) = N/a + N/b + N/c - N/lcm(a, c) - N/lcm(a, b) - N/lcm(b, c) + N/lcm(a, b, c)(lcm = least common multiple)
+             */
+            long low = Math.Min(a, b);
+            low = Math.Min(low, c);
+
+            long high = low * n;
+            long lcm_ab = LCM(a, b);
+            long lcm_ac = LCM(a, c);
+            long lcm_bc = LCM(b, c);
+            long lcm_abc = LCM(a, lcm_bc);
+            while (low < high)
+            {
+                long mid = low + (high - low) / 2;
+                long cnt = mid / a + mid / b + mid / c - mid / lcm_ab - mid / lcm_bc - mid / lcm_ac + mid / lcm_abc;
+                if (cnt < n)
+                    low = mid + 1;
+                else
+                    //the condition: F(N) >= k
+                    high = mid;
+            }
+            return (int)low;
+
+        }
+        // Use Euclid's algorithm to calculate the
+        // greatest common divisor (GCD) of two numbers.
+        private long GCD(long a, long b)
+        {
+            a = Math.Abs(a);
+            b = Math.Abs(b);
+
+            // Pull out remainders.
+            for (; ; )
+            {
+                long remainder = a % b;
+                if (remainder == 0) return b;
+                a = b;
+                b = remainder;
+            };
+        }
+        // Return the least common multiple
+        // (LCM) of two numbers.
+        private long LCM(long a, long b)
+        {
+            return a * b / GCD(a, b);
+        }
+
+        /// <summary>
+        /// https://leetcode.com/contest/weekly-contest-155/problems/smallest-string-with-swaps/
+        /// </summary>
+        /// <param name="n"></param>
+        /// <param name="a"></param>
+        /// <param name="b"></param>
+        /// <param name="c"></param>
+        /// <returns></returns>
+        public string SmallestStringWithSwaps(string s, IList<IList<int>> pairs)
+        {
+            char[] charArray = s.ToCharArray();
+            foreach (var pair in pairs)
+            {
+                char tmp = charArray[pair[0]];
+                charArray[pair[0]] = charArray[pair[1]];
+                charArray[pair[1]] = tmp;
+            }
+            return new String(charArray);
+        }
     }
 
 }
