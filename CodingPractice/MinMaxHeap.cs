@@ -16,7 +16,9 @@ namespace CommonPrograms
             {
                 MinHeapify(inputArray, n, i);
             }
-            return inputArray;
+
+
+                return inputArray;
         }
         private static void MinHeapify(int[] arr, int n, int i)
         {
